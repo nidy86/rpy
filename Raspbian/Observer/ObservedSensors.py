@@ -10,7 +10,7 @@ from Observer import Observer, Observable
 sys.path += ['../sensors']
 from ObservedDistanceSensor import ObservedDistanceSensor
 
-class SensorObserver
+class SensorObserver:
     def __init__(self):
         self.isOpen = 0
         self.openNotifier = Flower.OpenNotifier(self)
