@@ -24,6 +24,8 @@ class SensorObserver:
         self.closeNotifier.notifyObservers()
         self.openNotifier.close()
     def closing(self): return self.closeNotifier
+    def signalIn(self,name,value):
+        print
     
     class OpenNotifier(Observable):
         def __init__(self, outer):
@@ -64,10 +66,13 @@ class DistanceSensor:
     class OpenObserver(Observer):
         def __init__(self, outer):
             self.outer = outer
+            print("HC-SR05 Sensor '" + self.outer.name + "' wird gestartet.")
         def update(self, observable, arg):
             while self.outer.running:
                 dist = self.outer.hcsr04.measure()
-                print (self.outer.name + ": Gemessene Entfernung = %.1f cm" % dist)
+                #print (self.outer.name + ": Gemessene Entfernung = %.1f cm" % dist)
+                if dist<40:
+                    observable.signalIn(self.outer.name,dist)
                 time.sleep(1)
             
                 

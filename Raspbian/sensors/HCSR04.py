@@ -47,4 +47,6 @@ class HCSR04:
     		return distance
 
 	def close(self):
-		GPIO.cleanup()
+		try:
+			GPIO.cleanup()
+		except RuntimeWarning:
