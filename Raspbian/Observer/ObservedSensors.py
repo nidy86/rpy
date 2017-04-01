@@ -13,8 +13,8 @@ from ObservedDistanceSensor import ObservedDistanceSensor
 class SensorObserver:
     def __init__(self):
         self.isOpen = 0
-        self.openNotifier = Flower.OpenNotifier(self)
-        self.closeNotifier= Flower.CloseNotifier(self)
+        self.openNotifier = SensorObserver.OpenNotifier(self)
+        self.closeNotifier= SensorObserver.CloseNotifier(self)
     def open(self): # Opens its petals
         self.isOpen = 1
         self.openNotifier.notifyObservers()
