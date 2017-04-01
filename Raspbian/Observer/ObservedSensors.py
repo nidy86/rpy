@@ -89,8 +89,9 @@ if __name__ == '__main__':
     try:
         
         so = SensorObserver()
-        lsens = DistanceSensor("LINKS",20,21)
         rsens = DistanceSensor("RECHTS",19,26)
+        lsens = DistanceSensor("LINKS",20,21)
+        
         
         so.openNotifier.addObserver(lsens.openObserver)
         so.openNotifier.addObserver(rsens.openObserver)
