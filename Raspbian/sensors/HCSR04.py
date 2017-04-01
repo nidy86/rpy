@@ -50,3 +50,4 @@ class HCSR04:
 		try:
 			GPIO.cleanup()
 		except RuntimeWarning:
+			print ("GPIO bereits geschlossen.")
