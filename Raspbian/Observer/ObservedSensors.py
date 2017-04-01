@@ -52,34 +52,6 @@ class SensorObserver:
                 self.alreadyClosed = 1
         def open(self):
             self.alreadyClosed = 0
-
-        class OpenNotifier(Observable):
-        def __init__(self, outer):
-            Observable.__init__(self)
-            self.outer = outer
-            self.alreadyOpen = 0
-        def notifyObservers(self):
-            if self.outer.isOpen and \
-            not self.alreadyOpen:
-                self.setChanged()
-                Observable.notifyObservers(self)
-                self.alreadyOpen = 1
-        def close(self):
-            self.alreadyOpen = 0
-
-    class CloseNotifier(Observable):
-        def __init__(self, outer):
-            Observable.__init__(self)
-            self.outer = outer
-            self.alreadyClosed = 0
-        def notifyObservers(self):
-            if not self.outer.isOpen and \
-            not self.alreadyClosed:
-                self.setChanged()
-                Observable.notifyObservers(self)
-                self.alreadyClosed = 1
-        def open(self):
-            self.alreadyClosed = 0
             
             
             
