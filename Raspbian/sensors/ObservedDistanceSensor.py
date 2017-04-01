@@ -11,7 +11,7 @@ class ObservedDistanceSensor:
 		#GPIO Pins zuweisen
 		self.GPIO_TRIGGER = trigger
 		self.GPIO_ECHO = echo
-		self.running = 0;
+		self.running = 0
 		self.doSetup()
 		
 		self.openObserver = ObservedDistanceSensor.OpenObserver(self)
@@ -56,7 +56,7 @@ class ObservedDistanceSensor:
     		return distance
 
 	def close(self):
-		self.running = 0;
+		self.running = 0
 		GPIO.cleanup()
 		
 	# An inner class for observing openings:
