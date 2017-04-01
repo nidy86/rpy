@@ -1,5 +1,5 @@
 #Bibliotheken einbinden
-import ../RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 
 
@@ -58,7 +58,7 @@ if __name__ == '__main__':
     try:
         while True:
             abstand = sensor.measure()
-            print (sensor.getName(),": Gemessene Entfernung = %.1f cm" % abstand)
+            print (sensor.getName() + ": Gemessene Entfernung = %.1f cm" % abstand)
             time.sleep(1)
  
         # Beim Abbruch durch STRG+C resetten
