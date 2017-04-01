@@ -57,7 +57,7 @@ class DistanceSensor:
     def __init__(self, name,trigger,echo):
         self.name = name
         self.hcsr04 = HCSR04(name,trigger,echo);
-        self.running=1
+        self.running = True
         self.openObserver = DistanceSensor.OpenObserver(self)
         self.closeObserver = DistanceSensor.CloseObserver(self)
     # An inner class for observing openings:
@@ -65,19 +65,19 @@ class DistanceSensor:
         def __init__(self, outer):
             self.outer = outer
         def update(self, observable, arg):
-            try:
-                  while self.outer.running==1:
-                    dist = self.outer.hcsr04.measure()
-                    print (self.outer.name + ": Gemessene Entfernung = %.1f cm" % dist)
-                    time.sleep(1)
-              
+            while self.outer.running:
+                dist = self.outer.hcsr04.measure()
+                print (self.outer.name + ": Gemessene Entfernung = %.1f cm" % dist)
+                time.sleep(1)
+            
+                
     # Another inner class for closings:
     class CloseObserver(Observer):
         def __init__(self, outer):
             self.outer = outer
         def update(self, observable, arg):
             print("Abstandsmessung '"+self.outer.name + "' wird abgeschaltet.")
-            self.outer.running = 0
+            self.outer.running = False
             self.outer.hcsr04.close()            
             
 if __name__ == '__main__':
