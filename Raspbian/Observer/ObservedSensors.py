@@ -25,7 +25,7 @@ class SensorObserver:
         self.openNotifier.close()
     def closing(self): return self.closeNotifier
     def signalIn(self,name,value):
-        print
+        print (name + ": Gemessene Entfernung = %.1f cm" % value)
     
     class OpenNotifier(Observable):
         def __init__(self, outer):
