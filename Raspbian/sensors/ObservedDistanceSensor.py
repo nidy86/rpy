@@ -1,33 +1,13 @@
 #Bibliotheken einbinden
-import RPi.GPIO as GPIO
-import time
 import sys
 sys.path += ['../util']
 from Observer import Observer, Observable
+import RPi.GPIO as GPIO
+import time
+
 
 class ObservedDistanceSensor:
-	def __init__(self,name,trigger,echo):
-		self.SENSOR_NAME = name
-		#GPIO Pins zuweisen
-		self.GPIO_TRIGGER = trigger
-		self.GPIO_ECHO = echo
-		self.running = 0
-		self.doSetup()
-		
-		self.openObserver = ObservedDistanceSensor.OpenObserver(self)
-        self.closeObserver = ObservedDistanceSensor.CloseObserver(self)
-
-	def doSetup(self):
-		#GPIO Modus (BOARD / BCM)
-		GPIO.setmode(GPIO.BCM)
- 
-		#Richtung der GPIO-Pins festlegen (IN / OUT)
-		GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
-		GPIO.setup(self.GPIO_ECHO, GPIO.IN)
 	
-	def getName(self):
-		return self.SENSOR_NAME 
-
 	def measure(self):
     		# setze Trigger auf HIGH
     		GPIO.output(self.GPIO_TRIGGER, True)
@@ -59,6 +39,19 @@ class ObservedDistanceSensor:
 		self.running = 0
 		GPIO.cleanup()
 		
+	def __init__(self,name,trigger,echo):
+		self.name = name
+		self.GPIO_TRIGGER = trigger
+		self.GPIO_ECHO = echo
+		GPIO.setmode(GPIO.BCM)
+ 		GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
+		GPIO.setup(self.GPIO_ECHO, GPIO.IN)
+		self.running = 0
+		self.openObserver = ObservedDistanceSensor.OpenObserver(self)
+        self.closeObserver = ObservedDistanceSensor.CloseObserver(self)
+        
+		
+	
 	# An inner class for observing openings:
     class OpenObserver(Observer):
         def __init__(self, outer):
