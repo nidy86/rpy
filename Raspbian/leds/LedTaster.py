@@ -1,9 +1,9 @@
+#!/usr/bin/python
 '''
 Created on 16.04.2017
 
 @author: patrik
 '''
-#!/usr/bin/python
 
 # Verwenden von GPIO
 import RPi.GPIO as GPIO
