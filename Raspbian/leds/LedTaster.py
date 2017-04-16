@@ -14,24 +14,24 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 
 #GPIO Pins zuweisen
-GPIO_INPUT = 17
-GPIO_OUTPUT = 18
+PIN_IN = 17
+PIN_OUT = 18
 
-# Pin 11 als Input
-GPIO.setup(GPIO_INPUT, GPIO.IN)
-# Pin 12 als Output
-GPIO.setup(GPIO_OUTPUT, GPIO.OUT)
+# Pin 17 als Input
+GPIO.setup(PIN_IN, GPIO.IN)
+# Pin 18 als Output
+GPIO.setup(PIN_OUT, GPIO.OUT)
 
 
 if __name__ == '__main__':
     try:
         while True:
           # Solange Button nicht gedrueckt wird (False)
-          if not GPIO.input(GPIO_INPUT):
-            GPIO.output(GPIO_OUTPUT, True)
+          if not GPIO.input(PIN_IN):
+            GPIO.output(PIN_OUT, True)
           # Wenn der Button gedrueckt wird
           else:
-            GPIO.output(GPIO_OUTPUT, False)
+            GPIO.output(PIN_OUT, False)
 
         # Beim Abbruch durch STRG+C resetten
     except KeyboardInterrupt:
