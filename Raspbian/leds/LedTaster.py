@@ -18,20 +18,20 @@ PIN_IN = 17
 PIN_OUT = 18
 
 # Pin 17 als Input
-GPIO.setup(PIN_IN, GPIO.IN)
+GPIO.setup(17, GPIO.IN)
 # Pin 18 als Output
-GPIO.setup(PIN_OUT, GPIO.OUT)
+GPIO.setup(18, GPIO.OUT)
 
 
 if __name__ == '__main__':
     try:
         while True:
           # Solange Button nicht gedrueckt wird (False)
-          if not GPIO.input(PIN_IN):
-            GPIO.output(PIN_OUT, True)
+          if not GPIO.input(17):
+            GPIO.output(18, True)
           # Wenn der Button gedrueckt wird
           else:
-            GPIO.output(PIN_OUT, False)
+            GPIO.output(18, False)
 
         # Beim Abbruch durch STRG+C resetten
     except KeyboardInterrupt:
