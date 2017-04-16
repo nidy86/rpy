@@ -23,20 +23,26 @@ GPIO.setup(PIN_IN, GPIO.IN)
 # Pin 18 als Output
 GPIO.setup(PIN_OUT, GPIO.OUT)
 
+p = GPIO.PWM(PIN_OUT, 50)  # channel=12 frequency=50Hz
 
 if __name__ == '__main__':
     try:
         while True:
           # Solange Button nicht gedrueckt wird (False)
           if not GPIO.input(PIN_IN):
-            GPIO.output(PIN_OUT, False)
+            p.stop()
           # Wenn der Button gedrueckt wird
           else:
-            GPIO.output(PIN_OUT, True)
-            time.sleep(0.25)
-            GPIO.output(PIN_OUT, False)
-            time.sleep(0.25)
+            p.start(0)
+            for dc in range(0, 101, 5):
+            p.ChangeDutyCycle(dc)
+            time.sleep(0.1)
+        for dc in range(100, -1, -5):
+            p.ChangeDutyCycle(dc)
+            time.sleep(0.1)
         # Beim Abbruch durch STRG+C resetten
     except KeyboardInterrupt:
         print("Programm vom User gestoppt")
+        pass
+        p.stop()
         GPIO.cleanup()
