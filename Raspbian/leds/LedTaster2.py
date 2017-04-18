@@ -23,9 +23,8 @@ GPIO.setup(PIN_IN, GPIO.IN)
 # Pin 18 als Output
 GPIO.setup(PIN_OUT, GPIO.OUT)
 
-p = GPIO.PWM(PIN_OUT, 50)  # channel=12 frequency=50Hz
-
 if __name__ == '__main__':
+    p = GPIO.PWM(PIN_OUT, 50)  # channel=12 frequency=50Hz
     try:
         while True:
           # Solange Button nicht gedrueckt wird (False)
