@@ -36,9 +36,9 @@ if __name__ == '__main__':
             for dc in range(0, 101, 5):
                 p.ChangeDutyCycle(dc)
                 time.sleep(0.1)
-        for dc in range(100, -1, -5):
-            p.ChangeDutyCycle(dc)
-            time.sleep(0.1)
+            for dc in range(100, -1, -5):
+                p.ChangeDutyCycle(dc)
+                time.sleep(0.1)
         # Beim Abbruch durch STRG+C resetten
     except KeyboardInterrupt:
         print("Programm vom User gestoppt")
