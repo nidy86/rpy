@@ -105,7 +105,18 @@ def blink_police(pixels, blink_times=2, wait=0.5, color=(0,255,0)):
             pixels.show()
             time.sleep(0.04)
         time.sleep(wait)  
- 
+
+def kite_wheel(pixels, blink_times=2, wait=0.5, speed=0.08, color=(255,0,0)):
+     l = eval((pixels.count()/4)+1)
+     for i in range(0,pixels.count()):
+         for j in range(0, l):
+             if ((i-j) > 0):
+                 pixels.set_pixel((i-j), Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+         pixels.show()
+         time.sleep(speed)
+         pixels.clear()
+     time.sleep(wait)
+         
 def appear_from_back(pixels, color=(255, 0, 0)):
     pos = 0
     for i in range(pixels.count()):
@@ -131,6 +142,8 @@ if __name__ == "__main__":
     # brightness_decrease(pixels)
     
     # appear_from_back(pixels)
+    
+    
     
     for i in range(10):
         blink_police(pixels, blink_times = 2, wait = 0.2)
