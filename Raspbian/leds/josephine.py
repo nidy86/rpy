@@ -107,16 +107,26 @@ def blink_police(pixels, blink_times=2, wait=0.5, color=(0,255,0)):
         time.sleep(wait)  
 
 def kitt_wheel(pixels, blink_times=2, wait=0.5, speed=0.08, color=(255,0,0)):
-    l = 7
-    #eval((pixels.count()/4)+1)
-    for i in range(0,pixels.count()):
-        for j in range(0, l):
-            if ((i-j) > 0):
-                pixels.set_pixel((i-j), Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
-        pixels.show()
-        time.sleep(speed)
-        pixels.clear()
-    time.sleep(wait)
+    l = (pixels.count()/4)
+    for r in range(blink_times):
+        #eval()
+        for i in range(0,pixels.count()+l):
+            for j in range(0, l):
+                if ((i-j) > 0) and ((i-j)<=pixels.count()):
+                    pixels.set_pixel((i-j), Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+            pixels.show()
+            time.sleep(speed)
+            pixels.clear()
+        time.sleep(wait)
+        for i in range(pixels.count(),(l*(-1))):
+            for j in range(0, l):
+                if ((i-j) > 0) and ((i-j)<=pixels.count()):
+                    pixels.set_pixel((i-j), Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+            pixels.show()
+            time.sleep(speed)
+            pixels.clear()
+        time.sleep(wait)
+        
          
 def appear_from_back(pixels, color=(255, 0, 0)):
     pos = 0
@@ -144,10 +154,11 @@ if __name__ == "__main__":
     
     # appear_from_back(pixels)
     
-    kitt_wheel(pixels)
+   
     
     for i in range(10):
-        blink_police(pixels, blink_times = 2, wait = 0.2)
+         kitt_wheel(pixels,)
+        #blink_police(pixels, blink_times = 2, wait = 0.2)
         # blink_color(pixels, blink_times = 1, color=(0, 255, 0))
         # blink_color(pixels, blink_times = 1, color=(0, 0, 255))
  
