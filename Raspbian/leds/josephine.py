@@ -118,10 +118,10 @@ def kitt_wheel(pixels, blink_times=2, wait=0.5, speed=0.08, color=(255,0,0)):
             time.sleep(speed)
             pixels.clear()
         time.sleep(wait)
-        for i in range(0,pixels.count()+l):
+        for i in range(pixels.count(),((-1)*l),-1):
             for j in range(0, l):
-                if ((pixels.count()-(i-j)) > 0) and ((pixels.count()-(i-j))<pixels.count()):
-                    pixels.set_pixel((l-(i-j)), Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+                if ((i-j) > 0) and ((i-j)<pixels.count()):
+                    pixels.set_pixel((i-j), Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
             pixels.show()
             time.sleep(speed)
             pixels.clear()
