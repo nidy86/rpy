@@ -86,6 +86,24 @@ def blink_color(pixels, blink_times=5, wait=0.5, color=(255,0,0)):
             pixels.show()
             time.sleep(0.08)
         time.sleep(wait)
+
+def blink_police(pixels, blink_times=2, wait=0.5, color=(0,255,0)):
+    for i in range(blink_times):
+        pixels.clear()
+        for j in range(6):
+            for k in range(pixels.count()):
+                if i % 2 == 0:
+                    if k<(pixels.count()/3):
+                        pixels.set_pixel(k, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+                else:
+                    if k>((pixels.count()/3)*2):
+                        pixels.set_pixel(k, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+            pixels.show()
+            time.sleep(0.08)
+            pixels.clear()
+            pixels.show()
+            time.sleep(0.08)
+        time.sleep(wait)  
  
 def appear_from_back(pixels, color=(255, 0, 0)):
     pos = 0
@@ -114,7 +132,7 @@ if __name__ == "__main__":
     # appear_from_back(pixels)
     
     for i in range(3):
-        blink_color(pixels, blink_times = 1, color=(255, 0, 0))
+        blink_police(pixels)
         # blink_color(pixels, blink_times = 1, color=(0, 255, 0))
         # blink_color(pixels, blink_times = 1, color=(0, 0, 255))
  
