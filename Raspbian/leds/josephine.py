@@ -158,6 +158,8 @@ if __name__ == "__main__":
     
     for i in range(10):
         kitt_wheel(pixels,blink_times=2, wait=0.2, speed=0.04)
+        kitt_wheel(pixels,blink_times=2, wait=0.2, speed=0.04, color=(3,247,78))
+        kitt_wheel(pixels,blink_times=2, wait=0.7, speed=0.06, color=(247,141,3))
         #blink_police(pixels, blink_times = 2, wait = 0.2)
         # blink_color(pixels, blink_times = 1, color=(0, 255, 0))
         # blink_color(pixels, blink_times = 1, color=(0, 0, 255))
