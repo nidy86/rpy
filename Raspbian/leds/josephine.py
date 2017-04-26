@@ -106,7 +106,7 @@ def blink_police(pixels, blink_times=2, wait=0.5, color=(0,255,0)):
             time.sleep(0.04)
         time.sleep(wait)  
 
-def kite_wheel(pixels, blink_times=2, wait=0.5, speed=0.08, color=(255,0,0)):
+def kitt_wheel(pixels, blink_times=2, wait=0.5, speed=0.08, color=(255,0,0)):
      l = eval((pixels.count()/4)+1)
      for i in range(0,pixels.count()):
          for j in range(0, l):
@@ -143,7 +143,7 @@ if __name__ == "__main__":
     
     # appear_from_back(pixels)
     
-    
+    kitt_wheel(pixels)
     
     for i in range(10):
         blink_police(pixels, blink_times = 2, wait = 0.2)
