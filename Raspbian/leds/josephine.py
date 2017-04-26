@@ -115,8 +115,8 @@ if __name__ == "__main__":
     
     for i in range(3):
         blink_color(pixels, blink_times = 1, color=(255, 0, 0))
-        blink_color(pixels, blink_times = 1, color=(0, 255, 0))
-        blink_color(pixels, blink_times = 1, color=(0, 0, 255))
+        # blink_color(pixels, blink_times = 1, color=(0, 255, 0))
+        # blink_color(pixels, blink_times = 1, color=(0, 0, 255))
  
     
     
